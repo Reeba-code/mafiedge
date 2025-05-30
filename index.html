@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>MafiHub Cisco EDGE Center</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet" />
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+/>
+<style>
+
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+    background-color: #fff; 
+    color: #111; 
+    overflow-x: hidden;
+}
+
+
+.video-section {
+    position: relative;
+    background: #fff;
+    padding: 4rem 2rem 6rem 2rem;
+}
+
+
+.video-background {
+    display: none;
+}
+
+
+.overlay {
+    display: none;
+}
+.home-page {
+  background-color: #fff; 
+  padding: 6rem 2rem 8rem 2rem;
+  text-align: center;
+  color: #111; 
+  max-width: 900px;
+  margin: 0 auto;
+  font-family: 'Roboto', sans-serif;
+}
+
+.home-page h1 {
+  font-size: 5rem;
+  font-weight: 900;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: #000000;
+  margin-bottom: 1rem;
+  text-shadow:
+    0 0 10px #c5112e,
+    0 0 20px #c5112e,
+    0 0 30px #c5112e,
+    0 0 40px #c5112e,
+    0 0 70px #c5112e,
+    0 0 80px #00d0ff;
+  animation: neonGlow 3s ease-in-out infinite alternate;
+}
+
+.home-page h4 {
+  font-size: 1.6rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  animation: moveText 10s linear infinite;
+  color: #222;
+}
+
+.home-page p {
+  font-size: 1.2rem;
+  font-weight: 400;
+  line-height: 1.6;
+  max-width: 650px;
+  margin: 0 auto 3rem auto;
+  color: #444;
+  animation: moveText 12s linear infinite;
+}
+
+@keyframes neonGlow {
+  from {
+    text-shadow:
+      0 0 10px #0a74da,
+      0 0 20px #0a74da,
+      0 0 30px #0a74da,
+      0 0 40px #00d0ff,
+      0 0 70px #00d0ff,
+      0 0 80px #00d0ff;
+  }
+  to {
+    text-shadow:
+      0 0 20px #00d0ff,
+      0 0 30px #00d0ff,
+      0 0 40px #0a74da,
+      0 0 50px #0a74da,
+      0 0 80px #00d0ff,
+      0 0 90px #00d0ff;
+  }
+}
+
+
+@keyframes moveText {
+  0% {
+    transform: translateX(-5%);
+  }
+  50% {
+    transform: translateX(5%);
+  }
+  100% {
+    transform: translateX(-5%);
+  }
+}
+
+
+
+.loader {
+    margin: 3rem auto;
+    width: 150px;
+    height: 150px;
+    perspective: 600px;
+}
+
+.cube {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    animation: rotateCube 10s linear infinite;
+}
+
+.face {
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    background: #0a74da;
+    color: #fff;
+    font-weight: 700;
+    font-size: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #00d0ff;
+    box-shadow: 0 0 15px #00d0ff;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.face.front  { transform: translateZ(75px); }
+.face.back   { transform: rotateY(180deg) translateZ(75px); }
+.face.right  { transform: rotateY(90deg) translateZ(75px); }
+.face.left   { transform: rotateY(-90deg) translateZ(75px); }
+.face.top    { transform: rotateX(90deg) translateZ(75px); }
+.face.bottom { transform: rotateX(-90deg) translateZ(75px); }
+
+@keyframes rotateCube {
+    from { transform: rotateX(0) rotateY(0); }
+    to { transform: rotateX(360deg) rotateY(360deg); }
+}
+
+
+header {
+    background: #fff;
+    padding: 1rem 2rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.logo img {
+    height: 60px;
+}
+
+.title {
+    font-size: 1.8rem;
+    font-weight: 900;
+    color: #000000;
+    letter-spacing: 0.1em;
+}
+
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #000000;
+    font-weight: 600;
+    text-transform: uppercase;
+    transition: color 0.3s ease;
+    position: relative;
+}
+
+nav ul li a.active,
+nav ul li a:hover {
+    color: #c5112e;
+}
+
+nav ul li a::after {
+    content: '';
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    bottom: -4px;
+    left: 0;
+    background-color: #00d0ff;
+    transition: width 0.3s ease;
+}
+
+nav ul li a:hover::after,
+nav ul li a.active::after {
+    width: 100%;
+}
+
+
+#about {
+  background-color: #ffffff;
+  padding: 5rem 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#about .card {
+  background: #005072;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  border-radius: 1rem;
+  padding: 3rem;
+  color: #fffafa;
+  box-shadow: 0 0 20px rgba(0, 208, 255, 0.2);
+  max-width: 1500px;
+  animation: fadeInUp 1.2s ease-in-out;
+}
+
+#about .card h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #fff8f8;
+  margin-bottom: 1.5rem;
+  text-shadow: 0 0 8px rgba(0, 0, 0, 0.6);
+}
+
+#about .card p {
+  font-size: 1.125rem;
+  line-height: 1.8;
+  color: #ffffff;
+  margin-bottom: 1.25rem;
+}
+
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+
+footer {
+    background: #6EBE4A;
+    padding: 1rem 2rem;
+    font-weight: bold;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 -2px 8px rgba(0,0,0,0.1);
+    color: #000000;
+}
+
+.footer-logo img {
+    height:50px;
+}
+
+.footer-links a,
+.social-icons a {
+    margin-left: 1rem;
+    color: hsl(0, 100%, 0%);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-links a:hover,
+.social-icons a:hover {
+    color: #000000;
+}
+/* From Uiverse.io by Nawsome */ 
+.pl {
+  width: 6em;
+  height: 6em;
+}
+
+.pl__ring {
+  animation: ringA 2s linear infinite;
+}
+
+.pl__ring--a {
+  stroke: #6EBE4A;
+}
+
+.pl__ring--b {
+  animation-name: ringB;
+  stroke: #f49725;
+}
+
+.pl__ring--c {
+  animation-name: ringC;
+  stroke: #005072;
+}
+
+.pl__ring--d {
+  animation-name: ringD;
+  stroke: #c5112e;
+}
+
+/* Animations */
+@keyframes ringA {
+  from, 4% {
+    stroke-dasharray: 0 660;
+    stroke-width: 20;
+    stroke-dashoffset: -330;
+  }
+
+  12% {
+    stroke-dasharray: 60 600;
+    stroke-width: 30;
+    stroke-dashoffset: -335;
+  }
+
+  32% {
+    stroke-dasharray: 60 600;
+    stroke-width: 30;
+    stroke-dashoffset: -595;
+  }
+
+  40%, 54% {
+    stroke-dasharray: 0 660;
+    stroke-width: 20;
+    stroke-dashoffset: -660;
+  }
+
+  62% {
+    stroke-dasharray: 60 600;
+    stroke-width: 30;
+    stroke-dashoffset: -665;
+  }
+
+  82% {
+    stroke-dasharray: 60 600;
+    stroke-width: 30;
+    stroke-dashoffset: -925;
+  }
+
+  90%, to {
+    stroke-dasharray: 0 660;
+    stroke-width: 20;
+    stroke-dashoffset: -990;
+  }
+}
+
+@keyframes ringB {
+  from, 12% {
+    stroke-dasharray: 0 220;
+    stroke-width: 20;
+    stroke-dashoffset: -110;
+  }
+
+  20% {
+    stroke-dasharray: 20 200;
+    stroke-width: 30;
+    stroke-dashoffset: -115;
+  }
+
+  40% {
+    stroke-dasharray: 20 200;
+    stroke-width: 30;
+    stroke-dashoffset: -195;
+  }
+
+  48%, 62% {
+    stroke-dasharray: 0 220;
+    stroke-width: 20;
+    stroke-dashoffset: -220;
+  }
+
+  70% {
+    stroke-dasharray: 20 200;
+    stroke-width: 30;
+    stroke-dashoffset: -225;
+  }
+
+  90% {
+    stroke-dasharray: 20 200;
+    stroke-width: 30;
+    stroke-dashoffset: -305;
+  }
+
+  98%, to {
+    stroke-dasharray: 0 220;
+    stroke-width: 20;
+    stroke-dashoffset: -330;
+  }
+}
+
+@keyframes ringC {
+  from {
+    stroke-dasharray: 0 440;
+    stroke-width: 20;
+    stroke-dashoffset: 0;
+  }
+
+  8% {
+    stroke-dasharray: 40 400;
+    stroke-width: 30;
+    stroke-dashoffset: -5;
+  }
+
+  28% {
+    stroke-dasharray: 40 400;
+    stroke-width: 30;
+    stroke-dashoffset: -175;
+  }
+
+  36%, 58% {
+    stroke-dasharray: 0 440;
+    stroke-width: 20;
+    stroke-dashoffset: -220;
+  }
+
+  66% {
+    stroke-dasharray: 40 400;
+    stroke-width: 30;
+    stroke-dashoffset: -225;
+  }
+
+  86% {
+    stroke-dasharray: 40 400;
+    stroke-width: 30;
+    stroke-dashoffset: -395;
+  }
+
+  94%, to {
+    stroke-dasharray: 0 440;
+    stroke-width: 20;
+    stroke-dashoffset: -440;
+  }
+}
+
+@keyframes ringD {
+  from, 8% {
+    stroke-dasharray: 0 440;
+    stroke-width: 20;
+    stroke-dashoffset: 0;
+  }
+
+  16% {
+    stroke-dasharray: 40 400;
+    stroke-width: 30;
+    stroke-dashoffset: -5;
+  }
+
+  36% {
+    stroke-dasharray: 40 400;
+    stroke-width: 30;
+    stroke-dashoffset: -175;
+  }
+
+  44%, 50% {
+    stroke-dasharray: 0 440;
+    stroke-width: 20;
+    stroke-dashoffset: -220;
+  }
+
+  58% {
+    stroke-dasharray: 40 400;
+    stroke-width: 30;
+    stroke-dashoffset: -225;
+  }
+
+  78% {
+    stroke-dasharray: 40 400;
+    stroke-width: 30;
+    stroke-dashoffset: -395;
+  }
+
+  86%, to {
+    stroke-dasharray: 0 440;
+    stroke-width: 20;
+    stroke-dashoffset: -440;
+  }
+}
+
+.pl {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+  background-color: white;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+</style>
+</head>
+<body>
+<div id="loader">
+  <svg class="pl" width="80" height="80" viewBox="0 0 240 240">
+    <circle class="pl__ring pl__ring--a" cx="120" cy="120" r="105" fill="none" stroke="#0078d4" stroke-width="20" stroke-dasharray="0 660" stroke-dashoffset="-330" stroke-linecap="round"></circle>
+    <circle class="pl__ring pl__ring--b" cx="120" cy="120" r="35" fill="none" stroke="#f37021" stroke-width="20" stroke-dasharray="0 220" stroke-dashoffset="-110" stroke-linecap="round"></circle>
+    <circle class="pl__ring pl__ring--c" cx="85" cy="120" r="70" fill="none" stroke="#00b140" stroke-width="20" stroke-dasharray="0 440" stroke-linecap="round"></circle>
+    <circle class="pl__ring pl__ring--d" cx="155" cy="120" r="70" fill="none" stroke="#00b140" stroke-width="20" stroke-dasharray="0 440" stroke-linecap="round"></circle>
+  </svg>
+</div>
+
+<script>
+  
+  window.addEventListener("DOMContentLoaded", function () {
+    setTimeout(function () {
+      document.querySelector(".pl").style.display = "none";
+      document.getElementById("main-content").style.display = "block";
+    }, 5000);
+  });
+</script>
+
+
+  <!-- Header with 3D Cube Menu -->
+  <header>
+    <div class="logo">
+        <img src="images/logo.png" alt="logo"/>
+      <img src="images/Edge.jpg" alt="logo1"  height="300px" width="130px"/>
+    <!--  <h1 class="title">MafiEDGE Info</h1>-->
+    </div>
+
+    <nav>
+      <ul id="mainMenu">
+        <li><a href="#" class="active">Home</a></li>
+        <li><a href="courses.html">Courses</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+
+    <div class="cube-container" title="Cisco Certifications Cube">
+      <div class="cube">
+        <div class="face front">Cisco</div>
+        <div class="face back">EDGE</div>
+        <div class="face right">CCNA</div>
+        <div class="face left">CCNP</div>
+        <div class="face top">Security</div>
+        <div class="face bottom">DevNet</div>
+      </div>
+    </div>
+  </header>
+
+  <section class="home-page" style="text-align: center; padding: 2rem;">
+  <h1>MafiHub Cisco EDGE Center</h1>
+  <h4>Cybersecurity Awareness Initiative.</h4>
+  <p>
+    Accelerate Skills. Advance Business. Achieve Impact. 
+  </p>
+  
+  <div style="
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1.5rem;
+  ">
+    <img src="images/business.avif" alt="img1" style="width: 120px; height: auto; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);" />
+    <img src="images/cost.png" alt="img2" style="width: 120px; height: auto; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);" />
+    <img src="images/inspire.avif" alt="img3" style="width: 120px; height: auto; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);" />
+    <img src="images/operations.avif" alt="img4" style="width: 120px; height: auto; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);" />
+  </div>
+</section>
+
+
+
+ <section id="about" class="grid place-items-center py-20 px-4 sm:px-6 lg:px-8 bg-[#090e10]">
+  <div class="card w-full max-w-4xl relative overflow-hidden rounded-xl border border-white/20 bg-black/50 p-8 shadow-lg backdrop-blur">
+    <div class="card__border"></div>
+    
+    <div class="relative z-10 text-white">
+      <h2 class="text-3xl font-bold mb-6">About the Program</h2>
+      
+      <p class="mb-4">
+        This initiative is a partnership between the Mafikeng Digital Innovation Hub (MDiHub) and Cisco Country Digital Accelerator (Cisco CDA), aimed at equipping young people with essential digital skills for the modern economy.
+      </p>
+
+      <p class="mb-4">
+        The partnership introduces a major youth empowerment initiative: <strong>1,000 fully sponsored seats</strong> on the Cisco Networking Academy (NetAcad) platform for the Mahikeng Local Municipality. These free, self-paced online courses cover globally in-demand skills in <em>Cybersecurity, Networking, Internet of Things (IoT), Artificial Intelligence, Software Development</em>, and more.
+      </p>
+
+      <p class="mb-4">
+        The Socio-Economic Development Directorate of the Mahikeng Local Municipality, as a champion of the Smart City project for Mahikeng, will be working with the Mafikeng Digital Innovation Hub to recruit 1,000 candidates for this exciting opportunity.
+      </p>
+
+      <p class="mb-2">
+        The awareness session will include:
+      </p>
+      <ul class="list-disc list-inside mb-4">
+        <li>A live introduction to Cisco’s global career certifications (e.g., CCST, CCNA CyberOps, etc.)</li>
+        <li>Demonstrations from Cisco instructors</li>
+        <li>Engagement from local industry partners</li>
+      </ul>
+
+      <p>
+        This program is part of a broader initiative to address youth unemployment, stimulate ICT entrepreneurship, and expand access to professional digital learning resources in underserved communities.
+      </p>
+    </div>
+  </div>
+</section>
+
+
+  <footer>
+    <div class="footer-logo">
+      <img src="images/logo.png" />
+      <span>EDGE Center Mahikeng</span>
+    </div>
+    <div class="footer-links">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Service</a>
+      <a href="#">Accessibility</a>
+    </div>
+    <div class="social-icons">
+      <a href="#"><i class="fab fa-facebook-f"></i></a>
+      <a href="#"><i class="fab fa-twitter"></i></a>
+      <a href="#"><i class="fab fa-linkedin-in"></i></a>
+      <a href="#"><i class="fab fa-instagram"></i></a>
+    </div>
+  </footer>
+</body>
+</html>

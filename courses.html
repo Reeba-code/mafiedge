@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cisco EDGE Center - Courses</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<style>
+    /* Base Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Fonts and Base Styles */
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #f4f4f4;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* Header Styles */
+header {
+  background-color: #fff;
+  padding: 15px 5%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #ddd;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo img {
+  height: 50px;
+  margin-right: 15px;
+}
+
+.title {
+  font-size: 22px;
+  font-weight: bold;
+  color: #1a73e8;
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+  gap: 20px;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #333;
+  padding: 8px 15px;
+  border-radius: 20px;
+  transition: background 0.3s, color 0.3s;
+}
+
+nav ul li a:hover,
+nav ul li a.active {
+  color: #c5112e;
+}
+/* Header styling - white background with subtle shadow */
+header {
+    background: #fff;
+    padding: 1rem 2rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+
+.loader {
+    margin: 3rem auto;
+    width: 150px;
+    height: 150px;
+    perspective: 600px;
+}
+
+.cube {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    animation: rotateCube 10s linear infinite;
+}
+
+.face {
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    background: #0a74da;
+    color: #fff;
+    font-weight: 700;
+    font-size: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #00d0ff;
+    box-shadow: 0 0 15px #00d0ff;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.face.front  { transform: translateZ(75px); }
+.face.back   { transform: rotateY(180deg) translateZ(75px); }
+.face.right  { transform: rotateY(90deg) translateZ(75px); }
+.face.left   { transform: rotateY(-90deg) translateZ(75px); }
+.face.top    { transform: rotateX(90deg) translateZ(75px); }
+.face.bottom { transform: rotateX(-90deg) translateZ(75px); }
+
+@keyframes rotateCube {
+    from { transform: rotateX(0) rotateY(0); }
+    to { transform: rotateX(360deg) rotateY(360deg); }
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.logo img {
+    height: 40px;
+}
+
+.title {
+    font-size: 1.8rem;
+    font-weight: 900;
+    color: #000000;
+    letter-spacing: 0.1em;
+}
+
+/* Navigation menu */
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #000000;
+    font-weight: 600;
+    text-transform: uppercase;
+    transition: color 0.3s ease;
+    position: relative;
+}
+
+nav ul li a.active,
+nav ul li a:hover {
+    color: #c5112e;
+}
+
+nav ul li a::after {
+    content: '';
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    bottom: -4px;
+    left: 0;
+    background-color: #00d0ff;
+    transition: width 0.3s ease;
+}
+
+nav ul li a:hover::after,
+nav ul li a.active::after {
+    width: 100%;
+}
+
+
+/* Mobile Menu Button */
+.mobile-menu-btn {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 24px;
+}
+
+/* Responsive Navigation */
+@media (max-width: 768px) {
+  nav ul {
+    display: none;
+    position: absolute;
+    top: 70px;
+    right: 5%;
+    background-color: #fff;
+    flex-direction: column;
+    width: 200px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    padding: 10px 0;
+  }
+
+  nav ul li {
+    text-align: center;
+  }
+
+  nav ul li a {
+    display: block;
+    width: 100%;
+    padding: 10px;
+  }
+
+  .mobile-menu-btn {
+    display: block;
+    color: #333;
+  }
+
+  #mobileMenuBtn.active + nav ul {
+    display: flex;
+  }
+}
+
+/* Courses Page Styling */
+.courses-page {
+  padding: 50px 5%;
+  background-color: #f9fafc;
+}
+
+.courses-page .header {
+  text-align: center;
+  margin-bottom: 40px;
+  animation: fadeIn 0.8s ease-in-out;
+}
+
+.courses-page .header h1 {
+  font-size: 32px;
+  color: #000205;
+  font-weight: bold;
+  margin-bottom: 2rem;
+}
+
+.courses-page .header h4 {
+  font-size: 1.6rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  animation: moveText 10s linear infinite;
+  color: #222;
+}
+.courses-page .header p {
+  font-size: 16px;
+  color: #555;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Courses Container */
+.courses-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 50px;
+}
+
+/* Course Card */
+.course-card {
+ background: #005072;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.course-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* QR Code Image */
+.course-image {
+  margin-bottom: 15px;
+}
+
+.qr-code {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+/* Course Info */
+.course-info h3 {
+  font-size: 20px;
+  color: #ffffff;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.course-info p {
+  font-size: 15px;
+  color: #ffffff;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.course-link {
+  display: inline-block;
+  background-color: #c5112e;
+  color: #fff;
+  padding: 10px 18px;
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+}
+
+.course-link:hover {
+  background-color: #0b59c7;
+}
+
+footer {
+    background: #6EBE4A;
+    padding: 1rem 2rem;
+    font-weight: bold;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 -2px 8px rgba(0,0,0,0.1);
+    color: #000000;
+}
+
+.footer-logo img {
+    height: 30px;
+}
+
+.footer-links a,
+.social-icons a {
+    margin-left: 1rem;
+    color: hsl(0, 100%, 0%);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-links a:hover,
+.social-icons a:hover {
+    color: #000000;
+}
+
+
+</style>
+<body>
+
+     <!-- Header with 3D Cube Menu -->
+  <header>
+    <div class="logo">
+        <img src="images/logo.png" alt="logo"/>
+      <img src="images/cisco.png" alt="Cisco Logo" />
+      <h1 class="title">MafiEDGE Info</h1>
+    </div>
+
+    <nav>
+      <ul id="mainMenu">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="courses.html" class="active">Courses</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+
+
+    <div class="cube-container" title="Cisco Certifications Cube">
+      <div class="cube">
+        <div class="face front">Cisco</div>
+        <div class="face back">EDGE</div>
+        <div class="face right">CCNA</div>
+        <div class="face left">CCNP</div>
+        <div class="face top">Security</div>
+        <div class="face bottom">DevNet</div>
+      </div>
+    </div>
+  </header>
+
+    <!-- Main Content -->
+   <main> 
+    <section class="courses-page">
+        <div class="header">
+            <h1>Cisco EDGE Center Courses</h1>
+            <h4>Junior Cybersecurity Analyst Pathway</h4>
+            <p>Scan QR codes to access course materials or click the links for detailed information. Expand your networking expertise with our comprehensive Cisco certification programs.</p>
+        </div>
+
+        <div class="courses-container">
+            <!-- CCNA Course -->
+            <div class="course-card">
+                <div class="course-image">
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=https://www.netacad.com/courses/introduction-to-cybersecurity?courseLang=en-US&instance_id=6a208a29-cf4d-4cd1-a27a-271543f96d5b" alt="CCNA QR Code" class="qr-code">
+                </div>
+                <div class="course-info">
+                    <h3>Introduction to Cybersecurity</h3>
+                    <p>Start your cybersecurity journey with this foundational course that covers the basics of cyber threats, attacks, and defense strategies.</p>
+                    <a href="https://www.netacad.com/courses/introduction-to-cybersecurity?courseLang=en-US&instance_id=6a208a29-cf4d-4cd1-a27a-271543f96d5b" class="course-link">Explore Introduction to Cybersecurity</a>
+                </div>
+            </div>
+
+            <!-- CCNP Course -->
+            <div class="course-card">
+                <div class="course-image">
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=https://www.netacad.com/courses/networking-devices-and-initial-configuration?courseLang=en-US&instance_id=be9a99ed-dd26-487b-aa26-63d9cc342408" alt="CCNP QR Code" class="qr-code">
+                </div>
+                <div class="course-info">
+                    <h3>Networking Devices & Initial Configuration</h3>
+                    <p>Learn about networking devices and how to configure them initially, essential for building and managing secure networks.</p>
+                    <a href="https://www.netacad.com/courses/networking-devices-and-initial-configuration?courseLang=en-US&instance_id=be9a99ed-dd26-487b-aa26-63d9cc342408" class="course-link">Explore Networking Devices & Initial Configuration</a>
+                </div>
+            </div>
+
+            <!-- CyberOps Associate -->
+            <div class="course-card">
+                <div class="course-image">
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=https://www.netacad.com/courses/network-defense?courseLang=en-US&instance_id=00de63c3-6c55-491c-91a4-cd406a1df772" alt="CyberOps QR Code" class="qr-code">
+                </div>
+                <div class="course-info">
+                    <h3>Network Defense</h3>
+                    <p>Gain skills to protect networks from cyber threats and attacks by learning practical defense techniques.</p>
+                    <a href="https://www.netacad.com/courses/network-defense?courseLang=en-US&instance_id=00de63c3-6c55-491c-91a4-cd406a1df772" class="course-link">Explore Network Defense</a>
+                </div>
+            </div>
+
+            <!-- Endpoint Security -->
+            <div class="course-card">
+                <div class="course-image">
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=https://www.netacad.com/courses/endpoint-security?courseLang=en-US&instance_id=0aca71cd-b6b8-401b-98aa-1b297b6e01ef" alt="Endpoint Security QR Code" class="qr-code">
+                </div>
+                <div class="course-info">
+                    <h3>Endpoint Security</h3>
+                    <p>Learn how to secure endpoints such as laptops and mobile devices from cyber threats and vulnerabilities.</p>
+                    <a href="https://www.netacad.com/courses/endpoint-security?courseLang=en-US&instance_id=0aca71cd-b6b8-401b-98aa-1b297b6e01ef" class="course-link">Explore Endpoint Security</a>
+                </div>
+            </div>
+
+            <!-- Cyber Threat Management -->
+            <div class="course-card">
+                <div class="course-image">
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=https://www.netacad.com/courses/cyber-threat-management?courseLang=en-US&instance_id=ebecbb7d-c59d-442e-a676-23bef27f5625" alt="Cyber Threat Management QR Code" class="qr-code">
+                </div>
+                <div class="course-info">
+                    <h3>Cyber Threat Management</h3>
+                    <p>Understand how to manage and mitigate cyber threats with effective strategies and tools.</p>
+                    <a href="https://www.netacad.com/courses/cyber-threat-management?courseLang=en-US&instance_id=ebecbb7d-c59d-442e-a676-23bef27f5625" class="course-link">Explore Cyber Threat Management</a>
+                </div>
+            </div>
+
+            <!-- Junior Cybersecurity Analyst Career Path Exam -->
+            <div class="course-card">
+                <div class="course-image">
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=https://www.netacad.com/exams/cybersecurity-pathway?courseLang=en-US" alt="Career Path Exam QR Code" class="qr-code">
+                </div>
+                <div class="course-info">
+                    <h3>Junior Cybersecurity Analyst Career Path Exam</h3>
+                    <p>Test your knowledge and skills with this certification exam to validate your readiness for a career as a Junior Cybersecurity Analyst.</p>
+                    <a href="https://www.netacad.com/exams/cybersecurity-pathway?courseLang=en-US" class="course-link">Take the Career Path Exam</a>
+                </div>
+            </div>
+
+            <!-- Ethical Hacker -->
+            <div class="course-card">
+                <div class="course-image">
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=https://www.netacad.com/courses/ethical-hacker?courseLang=en-US&instance_id=4489b9ae-5a99-4f1c-b0f3-5f07f43a11a3" alt="Ethical Hacker QR Code" class="qr-code">
+                </div>
+                <div class="course-info">
+                    <h3>Ethical Hacker</h3>
+                    <p>Learn ethical hacking techniques to identify and fix vulnerabilities in systems, helping to strengthen cybersecurity defenses.</p>
+                    <a href="https://www.netacad.com/courses/ethical-hacker?courseLang=en-US&instance_id=4489b9ae-5a99-4f1c-b0f3-5f07f43a11a3" class="course-link">Explore Ethical Hacker</a>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+
+   
+
+  <footer>
+    <div class="footer-logo">
+      <img src="images/logo.png" alt="Cisco Logo" height="30" />
+      <span>EDGE Center Mahikeng</span>
+    </div>
+    <div class="footer-links">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Service</a>
+      <a href="#">Accessibility</a>
+    </div>
+    <div class="social-icons">
+      <a href="#"><i class="fab fa-facebook-f"></i></a>
+      <a href="#"><i class="fab fa-twitter"></i></a>
+      <a href="#"><i class="fab fa-linkedin-in"></i></a>
+      <a href="#"><i class="fab fa-instagram"></i></a>
+    </div>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contact – MafiHub Cisco EDGE Center</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Roboto', sans-serif;
+      background-color: #ffffff;
+      color: #000000;
+      line-height: 1.6;
+    }
+
+  header {
+    background: #fff;
+    padding: 1rem 2rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+
+.loader {
+    margin: 3rem auto;
+    width: 150px;
+    height: 150px;
+    perspective: 600px;
+}
+
+.cube {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    animation: rotateCube 10s linear infinite;
+}
+
+.face {
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    background: #0a74da;
+    color: #fff;
+    font-weight: 700;
+    font-size: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #00d0ff;
+    box-shadow: 0 0 15px #00d0ff;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.face.front  { transform: translateZ(75px); }
+.face.back   { transform: rotateY(180deg) translateZ(75px); }
+.face.right  { transform: rotateY(90deg) translateZ(75px); }
+.face.left   { transform: rotateY(-90deg) translateZ(75px); }
+.face.top    { transform: rotateX(90deg) translateZ(75px); }
+.face.bottom { transform: rotateX(-90deg) translateZ(75px); }
+
+@keyframes rotateCube {
+    from { transform: rotateX(0) rotateY(0); }
+    to { transform: rotateX(360deg) rotateY(360deg); }
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.logo img {
+    height: 40px;
+}
+
+.title {
+    font-size: 1.8rem;
+    font-weight: 900;
+    color: #000000;
+    letter-spacing: 0.1em;
+}
+
+/* Navigation menu */
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #000000;
+    font-weight: 600;
+    text-transform: uppercase;
+    transition: color 0.3s ease;
+    position: relative;
+}
+
+nav ul li a.active,
+nav ul li a:hover {
+    color: #c5112e;
+}
+
+nav ul li a::after {
+    content: '';
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    bottom: -4px;
+    left: 0;
+    background-color: #00d0ff;
+    transition: width 0.3s ease;
+}
+
+nav ul li a:hover::after,
+nav ul li a.active::after {
+    width: 100%;
+}
+
+
+    #about {
+      padding: 4rem 2rem;
+      background: #fff;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .card {
+      background-color: #005072;
+      padding: 2rem;
+      border-radius: 10px;
+      max-width: 600px;
+      width: 100%;
+      box-shadow: 0 0 20px rgba(0, 208, 255, 0.2);
+    }
+
+    .card h2 {
+      font-family: 'Roboto', sans-serif;
+      color: #fff;
+      margin-bottom: 1rem;
+      font-size: 2rem;
+    }
+
+    .card p {
+      margin-bottom: 2rem;
+      color: #fff;
+    }
+
+    form input,
+    form textarea {
+      width: 100%;
+      padding: 0.8rem;
+      margin-bottom: 1rem;
+      border: none;
+      border-radius: 5px;
+      font-size: 1rem;
+    }
+
+    form button {
+      padding: 0.8rem;
+      background-color: #00d0ff;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    form button:hover {
+      background-color: #00a3cc;
+    }
+
+    footer {
+    background: #6EBE4A;
+    padding: 1rem 2rem;
+    font-weight: bold;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 -2px 8px rgba(0,0,0,0.1);
+    color: #000000;
+}
+
+.footer-logo img {
+    height: 30px;
+}
+
+.footer-links a,
+.social-icons a {
+    margin-left: 1rem;
+    color: hsl(0, 100%, 0%);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-links a:hover,
+.social-icons a:hover {
+    color: #000000;
+}
+
+  </style>
+</head>
+<body>
+
+ 
+  <header>
+    <div class="logo">
+        <img src="images/logo.png" alt="logo"/>
+      <img src="images/cisco.png" alt="Cisco Logo" />
+      <h1 class="title">MafiEDGE Info</h1>
+    </div>
+
+    <nav>
+      <ul id="mainMenu">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="courses.html">Courses</a></li>
+        <li><a href="contact.html" class="active">Contact</a></li>
+      </ul>
+    </nav>
+
+    
+    <div class="cube-container" title="Cisco Certifications Cube">
+      <div class="cube">
+        <div class="face front">Cisco</div>
+        <div class="face back">EDGE</div>
+        <div class="face right">CCNA</div>
+        <div class="face left">CCNP</div>
+        <div class="face top">Security</div>
+        <div class="face bottom">DevNet</div>
+      </div>
+    </div>
+  </header>
+
+  <section class="home-page">
+  <div style="text-align: center; margin-top: 100px; animation: fadeSlideUp 2s ease-out forwards; opacity: 0;">
+  <h1 style="font-size: 3em; margin: 0; color: #2c3e50;">Courses</h1>
+  <h4 style="font-size: 1.5em; margin: 10px 0; color: #34495e;">Build your career with industry-relevant skills</h4>
+  <p style="font-size: 1.1em; max-width: 600px; margin: 0 auto; color: #555;">
+    We offer flexible programs to help you level up. Whether you're just getting started or upskilling for the future, there's a course for you.
+  </p>
+</div>
+
+<style>
+@keyframes fadeSlideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+</style>
+
+
+ 
+
+  <div id="about">
+    <div class="card">
+      <h2>More Courses Include:</h2>
+      <p>• Networking<br>
+         • Cybersecurity<br>
+         • Linux Administration<br>
+         • Cloud Computing<br>
+         • Internet of Things (IoT)<br>
+         • Automation and Programmability<br>
+         • Software Development</p>
+      <p><strong>Contact us</strong> for a detailed cost structure and to find out which package best suits your needs.</p>
+      <h2>For More Information</h2>
+      <p><strong>Phone:</strong> +27 62 133 6040</p>
+      <p><strong>Email:</strong> sndaba@mafihub.c0.za</p>
+      <p><strong>Address:</strong> Erf 4213 Jones Close, Leopard Park, Mahikeng 2745</p>
+    </div>
+  </div>
+</section>
+
+ <!-- <section id="about">
+    <div class="card">
+      <h2>Contact Us</h2>
+      <p>Feel free to get in touch with us for any queries, suggestions, or partnership opportunities.</p>
+      <form action="send_email.php" method="POST">
+        <input type="text" name="name" placeholder="Your Name" required />
+        <input type="email" name="email" placeholder="Your Email" required />
+        <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+        <button type="submit">Send Message</button>
+      </form>
+    </div>
+  </section>-->
+
+  <footer>
+    <div class="footer-logo">
+      <img src="logo.png" alt="Footer Logo" />
+    </div>
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="courses.html">Courses</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div class="social-icons">
+      <a href="#"><i class="fab fa-facebook"></i></a>
+      <a href="#"><i class="fab fa-twitter"></i></a>
+    </div>
+  </footer>
+
+</body>
+</html>
