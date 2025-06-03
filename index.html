@@ -589,35 +589,29 @@ footer {
 
 
   <!-- Header with 3D Cube Menu -->
-  <header>
-    <div class="logo">
-        <img src="images/logo.png" alt="logo"/>
-      <img src="images/Edge.jpg" alt="logo1"  height="300px" width="130px"/>
-    <!--  <h1 class="title">MafiEDGE Info</h1>-->
-    </div>
+ <header>
+  <div class="logo">
+    <img src="your-logo.png" alt="Logo" />
+    <span class="title">MafiHub Cisco EDGE Center</span>
+  </div>
 
-    <div class="menu-toggle">
-  <div></div>
-  <div></div>
-  <div></div>
-</div>
-    <script>
-  document.addEventListener('DOMContentLoaded', function () {
-    const toggle = document.querySelector('.menu-toggle');
-    const menu = document.querySelector('nav ul');
+  <!-- Hamburger Icon -->
+  <div class="menu-toggle" id="menu-toggle">
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
 
-    toggle.addEventListener('click', () => {
-      menu.classList.toggle('show');
-    });
-  });
-</script>
-    <nav>
-      <ul id="mainMenu">
-        <li><a href="#" class="active">Home</a></li>
-        <li><a href="courses.html">Courses</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-    </nav>
+  <!-- Navigation -->
+  <nav>
+    <ul id="nav-menu">
+      <li><a href="#" class="active">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#courses">Courses</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
 
     <div class="cube-container" title="Cisco Certifications Cube">
       <div class="cube">
@@ -708,5 +702,12 @@ footer {
       <a href="#"><i class="fab fa-instagram"></i></a>
     </div>
   </footer>
+
+  <script>
+  document.getElementById('menu-toggle').addEventListener('click', function () {
+    document.getElementById('nav-menu').classList.toggle('show');
+  });
+</script>
+  
 </body>
 </html>
