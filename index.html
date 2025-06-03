@@ -599,7 +599,16 @@ footer {
   <div></div>
   <div></div>
 </div>
-    
+    <script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const toggle = document.querySelector('.menu-toggle');
+    const menu = document.querySelector('nav ul');
+
+    toggle.addEventListener('click', () => {
+      menu.classList.toggle('show');
+    });
+  });
+</script>
     <nav>
       <ul id="mainMenu">
         <li><a href="#" class="active">Home</a></li>
@@ -678,16 +687,7 @@ footer {
   </div>
 </section>
 
-  <script>
-  document.addEventListener('DOMContentLoaded', function () {
-    const toggle = document.querySelector('.menu-toggle');
-    const menu = document.querySelector('nav ul');
-
-    toggle.addEventListener('click', () => {
-      menu.classList.toggle('show');
-    });
-  });
-</script>
+  
 
   <footer>
     <div class="footer-logo">
