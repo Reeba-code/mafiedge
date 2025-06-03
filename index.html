@@ -20,44 +20,7 @@ body, html {
     overflow-x: hidden;
 }
 
-/* Hamburger Menu */
-.menu-toggle {
-  display: none;
-  flex-direction: column;
-  cursor: pointer;
-  gap: 6px;
-}
 
-.menu-toggle div {
-  width: 25px;
-  height: 3px;
-  background-color: #000;
-  transition: 0.3s;
-}
-
-/* Responsive Navigation */
-@media (max-width: 768px) {
-  nav ul {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    background: #fff;
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
-    padding: 1rem 0;
-    display: none;
-  }
-
-  nav ul.show {
-    display: flex;
-  }
-
-  .menu-toggle {
-    display: flex;
-  }
-}
 .video-section {
     position: relative;
     background: #fff;
@@ -152,8 +115,6 @@ body, html {
   }
 }
 
-
-
 .loader {
     margin: 3rem auto;
     width: 150px;
@@ -167,6 +128,7 @@ body, html {
     position: relative;
     transform-style: preserve-3d;
     animation: rotateCube 10s linear infinite;
+    z-index: 999;
 }
 
 .face {
@@ -218,7 +180,7 @@ header {
 }
 
 .logo img {
-    height: 60px;
+    height: 70px;
 }
 
 .title {
@@ -562,6 +524,68 @@ footer {
   align-items: center;
   justify-content: center;
 }
+   
+.menu-toggle {
+  display: none;
+  font-size: 1.8rem;
+  cursor: pointer;
+  color: #000;
+}
+
+@media (max-width: 768px) {
+  nav ul.nav-links {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 70px;
+    right: 2rem;
+    background: #fff;
+    width: 200px;
+    padding: 1rem;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    z-index: 100;
+  }
+
+  nav ul.nav-links.showing {
+    display: flex;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+}
+@media screen and (max-width: 768px) {
+  .home-page h1 {
+    font-size: 2.8rem;
+    letter-spacing: 0.15em;
+  }
+
+  footer {
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+  }
+
+  .footer-links,
+  .social-icons {
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 0.5rem;
+  }
+
+  .footer-links a,
+  .social-icons a {
+    margin: 0.5rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .home-page h1 {
+    font-size: 2rem;
+    letter-spacing: 0.1em;
+  }
+}
+
 
 </style>
 </head>
@@ -585,28 +609,26 @@ footer {
   });
 </script>
 
-
-  <!-- Header with 3D Cube Menu -->
-  <header>
-    <div class="logo">
-        <img src="images/logo.png" alt="logo"/>
-      <img src="images/Edge.jpg" alt="logo1"  height="300px" width="130px"/>
-    <!--  <h1 class="title">MafiEDGE Info</h1>-->
-    </div>
-
-    <div class="menu-toggle">
-  <div></div>
-  <div></div>
-  <div></div>
-</div>
+<header>
+  <div class="logo">
+    <img src="images/logo.png" alt="Logo" />
+     <img src="images/Edge.jpg" alt="Logo1" />
     
-    <nav>
-      <ul id="mainMenu">
-        <li><a href="#" class="active">Home</a></li>
-        <li><a href="courses.html">Courses</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-    </nav>
+  </div>
+
+  <nav id="main-nav">
+    <ul class="nav-links">
+      <li><a href="#home" class="active">Home</a></li>
+      <li><a href="courses.html">Courses</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="menu-toggle" id="mobile-menu">
+      <i class="fas fa-bars"></i>
+    </div>
+  </nav>
+</header>
+
+
 
     <div class="cube-container" title="Cisco Certifications Cube">
       <div class="cube">
@@ -678,16 +700,6 @@ footer {
   </div>
 </section>
 
-  <script>
-  document.addEventListener('DOMContentLoaded', function () {
-    const toggle = document.querySelector('.menu-toggle');
-    const menu = document.querySelector('nav ul');
-
-    toggle.addEventListener('click', () => {
-      menu.classList.toggle('show');
-    });
-  });
-</script>
 
   <footer>
     <div class="footer-logo">
@@ -706,6 +718,15 @@ footer {
       <a href="#"><i class="fab fa-instagram"></i></a>
     </div>
   </footer>
+
+ <script>
+  const menuToggle = document.getElementById('mobile-menu');
+  const navLinks = document.querySelector('.nav-links');
+
+  menuToggle.addEventListener('click', () => {
+    navLinks.classList.toggle('showing');
+  });
+</script>
+
 </body>
 </html>
-    
