@@ -20,7 +20,44 @@ body, html {
     overflow-x: hidden;
 }
 
+/* Hamburger Menu */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  gap: 6px;
+}
 
+.menu-toggle div {
+  width: 25px;
+  height: 3px;
+  background-color: #000;
+  transition: 0.3s;
+}
+
+/* Responsive Navigation */
+@media (max-width: 768px) {
+  nav ul {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: #fff;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 0;
+    display: none;
+  }
+
+  nav ul.show {
+    display: flex;
+  }
+
+  .menu-toggle {
+    display: flex;
+  }
+}
 .video-section {
     position: relative;
     background: #fff;
@@ -557,6 +594,12 @@ footer {
     <!--  <h1 class="title">MafiEDGE Info</h1>-->
     </div>
 
+    <div class="menu-toggle">
+  <div></div>
+  <div></div>
+  <div></div>
+</div>
+    
     <nav>
       <ul id="mainMenu">
         <li><a href="#" class="active">Home</a></li>
@@ -635,6 +678,16 @@ footer {
   </div>
 </section>
 
+  <script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const toggle = document.querySelector('.menu-toggle');
+    const menu = document.querySelector('nav ul');
+
+    toggle.addEventListener('click', () => {
+      menu.classList.toggle('show');
+    });
+  });
+</script>
 
   <footer>
     <div class="footer-logo">
